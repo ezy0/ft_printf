@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migmoren <migmoren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 19:24:38 by migmoren          #+#    #+#             */
-/*   Updated: 2022/10/25 19:15:03 by migmoren         ###   ########.fr       */
+/*   Created: 2022/10/22 19:35:26 by migmoren          #+#    #+#             */
+/*   Updated: 2022/10/25 19:52:16 by migmoren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include "libft/libft.h"
+static void	ft_format(char *format, va_list arg)
+{
+	va_start (arg, )
+	if (*format == 'c')
 
-void	va_copy(va_list dest, va_list src);
-void	va_end(va_list ap);
+	else if (*format == 's')
 
-#endif
+	else if (*format == '%')
+			write (1, "%", 1);
+	else
+		return ;
+}
+
+/*int	ft_printf(char const *str, ...)
+{
+
+}*/
