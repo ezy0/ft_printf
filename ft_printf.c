@@ -6,7 +6,7 @@
 /*   By: migmoren <migmoren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 19:35:26 by migmoren          #+#    #+#             */
-/*   Updated: 2022/10/26 17:57:14 by migmoren         ###   ########.fr       */
+/*   Updated: 2022/10/26 18:10:33 by migmoren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_format(const char *format, va_list arg)
 	if (*format == '%')
 		pr += ft_putchar('%');
 	else if (*format == 'c')
-		pr += ft_putchar(format[0]);
+		pr += ft_putchar(va_arg(arg, int));
 	else if (*format == 's')
 		pr += ft_print_s(va_arg(arg, char *));
 	return (pr);
