@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_s.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migmoren <migmoren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 19:24:38 by migmoren          #+#    #+#             */
-/*   Updated: 2022/10/26 17:28:00 by migmoren         ###   ########.fr       */
+/*   Created: 2022/10/26 17:03:14 by migmoren          #+#    #+#             */
+/*   Updated: 2022/10/26 17:58:17 by migmoren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-# include "libft/libft.h"
-
-int		ft_printf(char const *str, ...);
-int		ft_print_s(const char *str);
-
-#endif
+int	ft_print_s(const char *str)
+{
+	if (!str)
+		return (write(1, "(null)", ft_strlen("(null)")));
+	return (write (1, str, ft_strlen(str)));
+}
