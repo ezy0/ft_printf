@@ -6,45 +6,18 @@
 /*   By: migmoren <migmoren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:20:18 by migmoren          #+#    #+#             */
-/*   Updated: 2022/11/13 14:09:26 by migmoren         ###   ########.fr       */
+/*   Updated: 2022/11/13 19:36:05 by migmoren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_base(int num, char *base)
+static int	ft_base(size_t num, char *base)
 {
-	int	len;
+	size_t	len;
 
 	len = 1;
-	if (num == -2147483648)
-		return (write(1, "-2147483648", 11));
-	if (num < 0)
-	{
-		ft_putchar('-');
-		len += ft_base(num * -1, base);
-	}
-	else if (num >= ft_strlen(base))
-	{
-		len += ft_base(num / ft_strlen(base), base);
-		ft_putchar(base[num % ft_strlen(base)]);
-	}
-	else
-		ft_putchar(base[num]);
-	return (len);
-}
-
-static int	ft_u(unsigned int num, char *base)
-{
-	unsigned int	len;
-
-	len = 1;
-	if (num < 0)
-	{
-		ft_putchar('-');
-		len += ft_base(num * -1, base);
-	}
-	else if (num >= (unsigned int)ft_strlen(base))
+	if (num >= (size_t)ft_strlen(base))
 	{
 		len += ft_base(num / ft_strlen(base), base);
 		ft_putchar(base[num % ft_strlen(base)]);
@@ -63,15 +36,20 @@ int	ft_print_nbr(int num, char format)
 	hex_min = "0123456789abcdef";
 	hex_upp = "0123456789ABCDEF";
 	dec = "0123456789";
-	if (format == 'd')
-		return (ft_base(num, dec));
-	if (format == 'i')
-		return (ft_base(num, dec));
+	if (format == 'd' || format == 'i')
+	{
+		if (num == -2147483648)
+			return (write(1, "-2147483648", 11));
+		else if (num < 0)
+			return (ft_putchar('-') + ft_base(num * -1, dec));
+		else
+			return (ft_base(num, dec));
+	}
 	if (format == 'u')
-		return (ft_u(num, dec));
+		return (ft_base((unsigned int)num, dec));
 	if (format == 'x')
-		return (ft_base(num, hex_min));
+		return (ft_base((unsigned int)num, hex_min));
 	if (format == 'X')
-		return (ft_base(num, hex_upp));
+		return (ft_base((unsigned int)num, hex_upp));
 	return (1);
 }
