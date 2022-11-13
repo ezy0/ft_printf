@@ -6,7 +6,7 @@
 #    By: migmoren <migmoren@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 18:55:18 by migmoren          #+#    #+#              #
-#    Updated: 2022/10/26 17:30:37 by migmoren         ###   ########.fr        #
+#    Updated: 2022/11/13 13:54:53 by migmoren         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libftprintf.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_printf.c ft_print_s.c
+SRC = ft_printf.c ft_print_s.c ft_print_p.c ft_print_nbr.c
 
 OBJS = ${SRC:.c=.o}
 

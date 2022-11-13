@@ -6,18 +6,18 @@
 /*   By: migmoren <migmoren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 19:35:26 by migmoren          #+#    #+#             */
-/*   Updated: 2022/10/26 18:10:33 by migmoren         ###   ########.fr       */
+/*   Updated: 2022/11/13 14:03:44 by migmoren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_putchar(char c)
+int	ft_putchar(char c)
 {
 	return (write (1, &c, 1));
 }
 
-static int	ft_format(const char *format, va_list arg)
+static int	ft_format(char const *format, va_list arg)
 {
 	int	pr;
 
@@ -27,7 +27,11 @@ static int	ft_format(const char *format, va_list arg)
 	else if (*format == 'c')
 		pr += ft_putchar(va_arg(arg, int));
 	else if (*format == 's')
-		pr += ft_print_s(va_arg(arg, char *));
+		pr += ft_print_s(va_arg(arg, char const *));
+	else if (*format == 'p')
+		pr += ft_print_p(va_arg(arg, void *));
+	else
+		pr += ft_print_nbr(va_arg(arg, int), *format);
 	return (pr);
 }
 
@@ -40,10 +44,10 @@ int	ft_printf(char const *str, ...)
 	pr = 0;
 	while (*str)
 	{
-		if (*str == '%')
-			pr += ft_format((str++) + 1, arg);
-		else
+		if (*str != '%')
 			pr += ft_putchar(*str);
+		else
+			pr += ft_format(++str, arg);
 		str++;
 	}
 	return (pr);
