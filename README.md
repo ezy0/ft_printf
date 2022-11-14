@@ -5,8 +5,6 @@
 **  ENNUNCIADO EN SUBJECT **
 #
 
-Pues eso, iré haciendo el printf
-
 TESTERS
 
 Tripouille printfTester: https://github.com/Tripouille/printfTester
