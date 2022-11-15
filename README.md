@@ -10,5 +10,3 @@ TESTERS
 Tripouille printfTester: https://github.com/Tripouille/printfTester
 
 MK_Test: https://github.com/marineks/MK_Test
-
-ftprintfdestructor: https://github.com/t0mm4rx/ftprintfdestructor
