@@ -6,7 +6,7 @@
 /*   By: migmoren <migmoren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 19:35:26 by migmoren          #+#    #+#             */
-/*   Updated: 2022/11/13 21:02:56 by migmoren         ###   ########.fr       */
+/*   Updated: 2022/11/15 17:41:18 by migmoren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 int	ft_putchar(char c)
 {
 	return (write (1, &c, 1));
+}
+
+static int	ft_error(char c)
+{
+	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u'
+		|| c == 'x' || c == 'X' || c == '%')
+		return (0);
+	return (1);
 }
 
 static int	ft_format(char const *format, va_list arg)
@@ -44,10 +52,10 @@ int	ft_printf(char const *str, ...)
 	pr = 0;
 	while (*str)
 	{
-		if (*str != '%')
-			pr += ft_putchar(*str);
-		else
+		if (*str == '%' && !ft_error(*(str + 1)))
 			pr += ft_format(++str, arg);
+		else
+			pr += ft_putchar(*str);
 		str++;
 	}
 	return (pr);

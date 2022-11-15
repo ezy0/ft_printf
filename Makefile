@@ -6,7 +6,7 @@
 #    By: migmoren <migmoren@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 18:55:18 by migmoren          #+#    #+#              #
-#    Updated: 2022/11/13 13:54:53 by migmoren         ###   ########.fr        #
+#    Updated: 2022/11/15 18:38:32 by migmoren         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ SRC_LIBFT = libft/ft_isalpha.c libft/ft_isdigit.c libft/ft_isalnum.c libft/ft_is
 			libft/ft_lstclear_bonus.c libft/ft_lstadd_back_bonus.c libft/ft_lstdelone_bonus.c libft/ft_lstiter_bonus.c libft/ft_lstmap_bonus.c
 
 OBJS_LIBFT	= ${SRC_LIBFT:.c=.o}
-
 
 .c.o: ${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
