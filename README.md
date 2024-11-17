@@ -3,7 +3,7 @@
 Mi propia función "printf" para C utilizando mis propias funciones básicas "libft".
 Mi printf solo tiene estas funcionalidades:
 
-• %c Imprime un solo carácter.
+• %c Imprime un solo carácter.\\
 • %s Imprime una string (como se define por defecto en C).
 • %p El puntero void * dado como argumento se imprime en formato hexadecimal.
 • %d Imprime un número decimal (base 10).
